@@ -1,6 +1,6 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { CountryDto } from './country-dto';
+import { CountryDto } from './country.dto';
 import { AxiosResponse } from 'axios';
 
 @Injectable()

@@ -1,5 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { CountryDto } from './country-dto';
+import { CountryDto } from './country.dto';
 import { CountryService } from './country.service';
 
 @Controller('country')
