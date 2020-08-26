@@ -10,21 +10,32 @@ import {
   MaxLength,
   Min,
   MinLength,
+  ValidationArguments,
 } from 'class-validator';
 import { RegionEnum } from './region.enum';
 
 export class CountryDto {
+
   @IsString()
   readonly name: string;
 
   @IsString()
   @IsUppercase()
-  @Length(2, 2) // Equal to @MinLength(3)@MaxLength(3)
+  @Length(2, 2, {
+    message: ({ value, constraints, property, object, targetName }: ValidationArguments) => {
+      if (constraints[0] === constraints[1]) {
+        return `${property} must have length ${constraints[0]}`;
+      } else {
+        return `${property} must have a length 
+                between ${constraints[0]} and ${constraints[1]}`;
+      }
+    },
+  })
   readonly alpha2Code: string;
 
   @IsString()
   @IsUppercase()
-  @Length(3, 3)
+  @Length(3, 3) // Equal to @MinLength(3)@MaxLength(3)
   readonly alpha3Code: string;
 
   @IsEnum(RegionEnum)
