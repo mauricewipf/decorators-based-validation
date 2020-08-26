@@ -1,4 +1,6 @@
 import {
+  ArrayMaxSize,
+  ArrayMinSize,
   IsArray,
   IsEnum,
   IsInt,
@@ -7,9 +9,8 @@ import {
   IsUppercase,
   IsUrl,
   Length,
-  MaxLength,
+  Max,
   Min,
-  MinLength,
   ValidationArguments,
 } from 'class-validator';
 import { RegionEnum } from './region.enum';
@@ -50,10 +51,10 @@ export class CountryDto {
   readonly population: number;
 
   @IsArray()
-  @MinLength(2)
-  @MaxLength(2, {
-    each: true,
-  })
+  @ArrayMinSize(2)
+  @ArrayMaxSize(2)
+  @Min(-180)
+  @Max(180)
   readonly latlng: Array<number>;
 
   @IsNumber()
