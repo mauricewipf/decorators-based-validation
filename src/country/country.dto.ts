@@ -9,7 +9,6 @@ import {
   IsUppercase,
   IsUrl,
   Length,
-  Max,
   Min,
   ValidationArguments,
 } from 'class-validator';
@@ -53,8 +52,6 @@ export class CountryDto {
   @IsArray()
   @ArrayMinSize(2)
   @ArrayMaxSize(2)
-  @Min(-180)
-  @Max(180)
   readonly latlng: Array<number>;
 
   @IsNumber()
