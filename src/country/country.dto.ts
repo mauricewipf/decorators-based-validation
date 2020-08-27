@@ -13,7 +13,7 @@ import {
   Min,
   ValidationArguments,
 } from 'class-validator';
-import { RegionEnum } from './region.enum';
+import { Region } from './region.enum';
 
 export class CountryDto {
 
@@ -39,8 +39,8 @@ export class CountryDto {
   @Length(3, 3) // Equal to @MinLength(3)@MaxLength(3)
   readonly alpha3Code: string;
 
-  @IsEnum(RegionEnum)
-  readonly region: string;
+  @IsEnum(Region)
+  readonly region: Region;
 
   @IsInt({
     message: 'Population must be an Integer',

@@ -1,7 +1,7 @@
-import { RegionEnum } from './region.enum';
+import { Region } from './region.enum';
 
 describe('RegionEnum', () => {
   it('should be defined', () => {
-    expect(new RegionEnum()).toBeDefined();
+    expect(new Region()).toBeDefined();
   });
 });

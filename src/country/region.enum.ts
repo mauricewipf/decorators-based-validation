@@ -1,4 +1,4 @@
-export enum RegionEnum {
+export enum Region {
   Africa = 'Africa',
   Americas = 'Americas',
   Asia = 'Asia',
