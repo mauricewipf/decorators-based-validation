@@ -10,8 +10,12 @@ export class CountryService {
   constructor(private readonly httpService: HttpService) {
   }
 
-  getCountry(country: string): Observable<AxiosResponse<CountryDto>> {
-    return this.httpService.get(`${CountryService.URL}/name/${country}`);
+  getCountryByName(name: string): Observable<AxiosResponse<CountryDto>> {
+    return this.httpService.get(`${CountryService.URL}/name/${name}`);
+  }
+
+  getCountryByCode(code: string): Observable<AxiosResponse<CountryDto>> {
+    return this.httpService.get(`${CountryService.URL}/alpha/${code}`);
   }
 
 }
