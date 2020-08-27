@@ -9,7 +9,14 @@ import { CountryController } from './country/country.controller';
     HttpModule,
   ],
   controllers: [AppController, CountryController],
-  providers: [AppService, CountryService],
+  providers: [
+    AppService,
+    CountryService,
+    /*{
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
+    },*/
+  ],
 })
 export class AppModule {
 }
