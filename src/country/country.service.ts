@@ -2,6 +2,7 @@ import { HttpService, Injectable } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { CountryDto } from './country.dto';
 import { AxiosResponse } from 'axios';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class CountryService {
@@ -18,4 +19,17 @@ export class CountryService {
     return this.httpService.get(`${CountryService.URL}/alpha/${code}`);
   }
 
+  updateCountryByCode(code: string, countryDto: CountryDto): Observable<AxiosResponse<CountryDto>> {
+    return this.getCountryByCode(code).pipe(
+      map((axiosResponse: AxiosResponse) => {
+        return {
+          ...axiosResponse,
+          data: {
+            ...axiosResponse.data,
+            ...countryDto,
+          },
+        };
+      }),
+    );
+  }
 }
