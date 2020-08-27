@@ -43,7 +43,7 @@ export class CountryDto {
   readonly region: Region;
 
   @IsInt({
-    message: 'Population must be an Integer',
+    message: '$property must be an Integer',
   })
   @Min(1, {
     message: '$property must be equal or larger than $constraint1',
